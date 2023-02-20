@@ -37,17 +37,15 @@ while True:
                 print(f"No se encontró el empleado {DNI}")
         case 4:
             DNI = input("Dime el DNI del empleado: ")
-            for i, empleado in enumerate(dni_edades):
-                if empleado[0] == DNI:
-                    edades = empleado[1]
-                    print(f"La nota actual de {empleado[0]} es {edades}")
-                    edadNueva = float(
-                    input(f"Dime la nota nueva para {empleado[0]}: "))
-                    edades[i] = edadNueva
-                    print(f"La nota de {empleado[0]} ha sido actualizada a {edadNueva}")
-
+            if DNI in dni_edades:
+                edad_actual = dni_edades[DNI]
+                print(f"La edad actual de {DNI} es {edad_actual}")
+                edad_nueva = int(input(f"Dime la nueva edad para {DNI}: "))
+                dni_edades[DNI] = edad_nueva
+                print(f"La edad de {DNI} ha sido actualizada a {edad_nueva}")
             else:
-                print(f"No se encontró el alumno con DNI {DNI}")
+                print(f"No se encontró el empleado con DNI {DNI}")
+
         case 5:
             break
     print(f"---------------------------------------------------------------------------------------------------------")
