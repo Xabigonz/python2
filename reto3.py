@@ -1,46 +1,49 @@
 dnis = []
-dniYnotas = ['Prueba1', 7.25, 'Carmelo', 5.32]
-notas = []
+dniYedades = ['DFENFE87X', 19, 'EFJBFE', 22]
+edades = []
 while True:
     print(f"---------------------------------------------------------------------------------------------------------")
-    caso=int(input(f"Menu: \n 1 para mostrar la lista de alumnos \n 2 para añadir alumnos y su nota \n 3 para eliminar a alumnos \n 4 para modificar la nota de un alumno \n 5 para salir del menu"
+    caso=int(input(f"Menu: \n 1 para mostrar la lista de empleados \n 2 para añadir empleados y su edad \n 3 para eliminar a empleado \n 4 para modificar la edad de un empleado \n 5 para salir del menu"
                  f"\n Eliga una opcion : \n"))
 
     match caso:
 
         case 1:
-            print(f"{dniYnotas}")
+            print(f"{dniYedades}")
         case 2:
             DNI = input("Dime cual es su nombre :")
             while DNI in dnis:
-                print(f"El alumno {DNI} ya existe")
-                DNI = input("Dime cual es su nombre :")
+                print(f"El empleado {DNI} ya existe")
+                DNI = input("Dime cual su dni :")
             else:
                 dnis.append(DNI)
-                nota = float(input(f"Cual es la nota de {DNI} : "))
-                notas.append(nota)
-                print(f"Se ha integrado a {DNI} correctamente y su nota es {nota}")
-                dniYnotas.append((DNI, str(nota)))
+                edad = float(input(f"Cual es la edad de {DNI} : "))
+                while edad<18 or edad>65:
+                    print(f"Lo siento esas {edad} esta fuera del rango de la empresa")
+                else:
+                    edades.append(edad)
+                    print(f"Se ha integrado a {DNI} correctamente y su edad es {edad}")
+                    dniYedades.append((DNI, str(edad)))
         case 3:
-            DNI = input("Dime el DNI del alumno que quieres eliminar: ")
-            for i in dniYnotas:
+            DNI = input("Dime el DNI del empleado que quieres eliminar: ")
+            for i in dniYedades:
                 if i[0] == dnis:
-                    dniYnotas.remove(i)
+                    dniYedades.remove(i)
                     dnis.remove(DNI)
-                    notas.remove(nota[1])
-                    print(f"El alumno con DNI {DNI} ha sido eliminado.")
+                    edades.remove(edad[1])
+                    print(f"El empleado con DNI {DNI} ha sido eliminado.")
                     break
             else:
-                print(f"No se encontró el alumno {DNI}")
+                print(f"No se encontró el empleado {DNI}")
         case 4:
-            DNI = input("Dime el DNI del alumno: ")
-            for i, alumno in enumerate(dniYnotas):
-                if alumno[0] == DNI:
-                    nota = alumno[1]
-                    print(f"La nota actual de {alumno[0]} es {nota}")
-                    notaNueva = float(input(f"Dime la nota nueva para {alumno[0]}: "))
-                    notas[i] = notaNueva
-                    print(f"La nota de {alumno[0]} ha sido actualizada a {notaNueva}")
+            DNI = input("Dime el DNI del empleado: ")
+            for i, empleado in enumerate(dniYedades):
+                if empleado[0] == DNI:
+                    edad = empleado[1]
+                    print(f"La nota actual de {empleado[0]} es {edad}")
+                    edadNueva = float(input(f"Dime la nota nueva para {empleado[0]}: "))
+                    edades[i] = edadNueva
+                    print(f"La nota de {empleado[0]} ha sido actualizada a {edadNueva}")
 
             else:
                 print(f"No se encontró el alumno con DNI {DNI}")
