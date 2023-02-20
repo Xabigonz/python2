@@ -11,7 +11,7 @@ while True:
         case 1:
             print(f"{dniYedades}")
         case 2:
-            DNI = input("Dime cual es su nombre :")
+            DNI = input("Dime cual es su DNI :")
             while DNI in dnis:
                 print(f"El empleado {DNI} ya existe")
                 DNI = input("Dime cual su dni :")
@@ -20,6 +20,7 @@ while True:
                 edad = float(input(f"Cual es la edad de {DNI} : "))
                 while edad<18 or edad>65:
                     print(f"Lo siento esas {edad} esta fuera del rango de la empresa")
+                    edad = float(input(f"Cual es la edad de {DNI} : "))
                 else:
                     edades.append(edad)
                     print(f"Se ha integrado a {DNI} correctamente y su edad es {edad}")
