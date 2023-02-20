@@ -1,5 +1,6 @@
 dnis = []
-dniYedades = ['DFENFE87X', 19, 'EFJBFE', 22]
+dni_edades = {'DFENFE87X':19, 'EFJBFE': 22}
+
 edades = []
 while True:
     print(f"---------------------------------------------------------------------------------------------------------")
@@ -9,7 +10,7 @@ while True:
     match caso:
 
         case 1:
-            print(f"{dniYedades}")
+            print(f"{dni_edades}")
         case 2:
             DNI = input("Dime cual es su DNI :")
             while DNI in dnis:
@@ -17,31 +18,27 @@ while True:
                 DNI = input("Dime cual su dni :")
             else:
                 dnis.append(DNI)
-                edad = float(input(f"Cual es la edad de {DNI} : "))
-                while edad<18 or edad>65:
+                edad = int(input(f"Cual es la edad de {DNI} : "))
+                while edad<=18 or edad>=65:
                     print(f"Lo siento esas {edad} esta fuera del rango de la empresa")
                     edad = float(input(f"Cual es la edad de {DNI} : "))
                 else:
                     edades.append(edad)
                     print(f"Se ha integrado a {DNI} correctamente y su edad es {edad}")
-                    dniYedades.append((DNI, str(edad)))
+                    dni_edades.update({DNI : edades})
         case 3:
             DNI = input("Dime el DNI del empleado que quieres eliminar: ")
-            for i in dniYedades:
-                if i[0] == dnis:
-                    dniYedades.remove(i)
-                    dnis.remove(DNI)
-                    edades.remove(edad[1])
-                    print(f"El empleado con DNI {DNI} ha sido eliminado.")
-                    break
+            if DNI in dni_edades:
+                del dni_edades[DNI]
+                print(f"El empleado con DNI {DNI} ha sido eliminado.")
             else:
                 print(f"No se encontró el empleado {DNI}")
         case 4:
             DNI = input("Dime el DNI del empleado: ")
-            for i, empleado in enumerate(dniYedades):
+            for i, empleado in enumerate(dni_edades):
                 if empleado[0] == DNI:
-                    edad = empleado[1]
-                    print(f"La nota actual de {empleado[0]} es {edad}")
+                    edades = empleado[1]
+                    print(f"La nota actual de {empleado[0]} es {edades}")
                     edadNueva = float(input(f"Dime la nota nueva para {empleado[0]}: "))
                     edades[i] = edadNueva
                     print(f"La nota de {empleado[0]} ha sido actualizada a {edadNueva}")
