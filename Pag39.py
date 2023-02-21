@@ -33,7 +33,7 @@ print(f"Tienes {vidas} intentos para adivinar el número secreto entre 1 y 10.")
 print("------------------------------------------------------------")
 
 for vida in range(vidas):
-    # Mientra que vida se encuentre en el rango vidas entra
+    # Mientras que vida se encuentre en el rango vidas entra
     res = int(input("Introduce un numero entero : "))
     if rnd != res:
         vidas_restantes = vidas - vida
