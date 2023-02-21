@@ -1,16 +1,18 @@
+# Reto 3, Introducir edades par empleados
+# Declaración de varibles
 dnis = []
 dni_edades = {'DFENFE87X': 19, 'EFJBFE': 22}
-
 edades = []
+#Creacion de Menu
 while True:
     print(f"---------------------------------------------------------------------------------------------------------")
     caso = int(input(f"Menu: \n 1 para mostrar la lista de empleados \n 2 para añadir empleados y su edad \n 3 para eliminar a empleado \n 4 para modificar la edad de un empleado \n 5 para salir del menu"
                      f"\n Eliga una opcion : \n"))
-
     match caso:
-
+        # para mostrar la lista de empleados
         case 1:
             print(f"{dni_edades}")
+        # para añadir empleados y su edad
         case 2:
             DNI = input("Dime cual es su DNI :")
             while DNI in dnis:
@@ -28,6 +30,7 @@ while True:
                     print(
                         f"Se ha integrado a {DNI} correctamente y su edad es {edad}")
                     dni_edades.update({DNI: edades})
+        # para eliminar a empleado
         case 3:
             DNI = input("Dime el DNI del empleado que quieres eliminar: ")
             if DNI in dni_edades:
@@ -35,6 +38,7 @@ while True:
                 print(f"El empleado con DNI {DNI} ha sido eliminado.")
             else:
                 print(f"No se encontró el empleado {DNI}")
+        # para modificar la edad de un empleado
         case 4:
             DNI = input("Dime el DNI del empleado: ")
             if DNI in dni_edades:
@@ -45,7 +49,7 @@ while True:
                 print(f"La edad de {DNI} ha sido actualizada a {edad_nueva}")
             else:
                 print(f"No se encontró el empleado con DNI {DNI}")
-
+        # para salir del menu
         case 5:
             break
     print(f"---------------------------------------------------------------------------------------------------------")
